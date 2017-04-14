@@ -2,7 +2,14 @@
  * app.js serves as the entry point into our application
  */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import Menu from './components/global/menu.jsx';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import todoApp from './reducers/reducers';
+import App from './components/App';
 
-ReactDOM.render(<Menu />, document.getElementById('app'));
+let store = createStore(todoApp);
+
+render(<Provider store={store}>
+    <App />
+</Provider>, document.getElementById("app"));
